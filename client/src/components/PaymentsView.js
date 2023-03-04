@@ -4,10 +4,10 @@ import PaymentsTable from "./PaymentsTable";
 
 function PaymentsView({ payments }) {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
-    
+
   const paymentTypes = {
     allPayments: { order: 1, title: "All Payments", filter: () => true },
-    completePayments: { order: 3,  title: "Complete", filter: (payment) => payment.status === "Complete"  },
+    completePayments: { order: 3,  title: "Complete", filter: (payment) => payment.status === "Completed"  },
     pendingPayments: { order: 2, title: "Pending", filter: (payment) => payment.status === "Pending" } ,
     cancelledPayments: { order: 4, title: "Cancelled", filter: (payment) => payment.status === "Cancelled" }
   };
@@ -29,7 +29,7 @@ function PaymentsView({ payments }) {
                 return (
                     <Tab key={key} title={tabProps.title}>
                       <Box margin="small" gap="small">
-                        <PaymentsTable payments={
+                        <PaymentsTable data={
                           payments.filter(tabProps.filter)
                         } />
                       </Box>
